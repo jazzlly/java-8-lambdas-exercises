@@ -1,9 +1,7 @@
-# Idea
+.project
+.classpath
+.settings
+target
+log
 .idea
 *.iml
-
-# Maven
-target/
-
-# Vim
-*.swp
