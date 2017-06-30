@@ -5,6 +5,8 @@
 
 package com.insightfullogic.java8.examples.chapter1;
 
+import lombok.Data;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -17,6 +19,7 @@ import static java.util.stream.Collectors.toList;
  *
  * @author richard
  */
+@Data
 public final class Album implements Performance {
     
     private String name;
@@ -77,5 +80,4 @@ public final class Album implements Performance {
         List<Artist> musicians = getMusicians().map(Artist::copy).collect(toList());
         return new Album(name, tracks, musicians);
     }
-
 }

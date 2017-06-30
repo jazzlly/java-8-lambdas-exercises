@@ -5,6 +5,8 @@
 
 package com.insightfullogic.java8.examples.chapter1;
 
+import lombok.Data;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -18,6 +20,7 @@ import static java.util.stream.Collectors.toList;
  * 
  * @author Richard Warburton
  */
+@Data
 public final class Artist {
     
     private String name;

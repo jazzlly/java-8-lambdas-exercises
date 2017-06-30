@@ -5,9 +5,12 @@
 
 package com.insightfullogic.java8.examples.chapter1;
 
+import lombok.Data;
+
 /**
  * @author richard
  */
+@Data
 public final class Track {
     
     private final String name;
@@ -35,5 +38,4 @@ public final class Track {
     public Track copy() {
         return new Track(name, length);
     }
-
 }
