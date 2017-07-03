@@ -13,7 +13,25 @@ import java.util.stream.Stream;
 public class FilterUsingReduce {
 
     public static <I> List<I> filter(Stream<I> stream, Predicate<I> predicate) {
-        return Exercises.replaceThisWithSolution();
+        List<I> list = new ArrayList<>();
+        stream.reduce((acc, element) -> {
+            if (predicate.test(element)) {
+                list.add(element);
+            }
+            return element;
+        });
+        return list;
+        // return Exercises.replaceThisWithSolution();
+    }
+
+    public static void main(String[] args) {
+        System.out.println(
+                FilterUsingReduce.filter(
+                        Stream.of(1, 2, 3, 9, 8),
+                        integer -> integer >= 3).toString()
+        );
+
+
     }
 
 }

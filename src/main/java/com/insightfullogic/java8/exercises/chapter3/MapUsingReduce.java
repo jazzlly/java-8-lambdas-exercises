@@ -13,7 +13,23 @@ import java.util.stream.Stream;
 public class MapUsingReduce {
 
     public static <I, O> List<O> map(Stream<I> stream, Function<I, O> mapper) {
-        return Exercises.replaceThisWithSolution();
+        List<O> list = new ArrayList<>();
+
+        stream.reduce((i, i2) -> {
+            list.add(mapper.apply(i2));
+            return i;
+        });
+
+        return list;
+        // return Exercises.replaceThisWithSolution();
+    }
+
+    public static void main(String[] args) {
+        System.out.println(
+                MapUsingReduce.map(
+                        Stream.of(1, 2, 3, 4),
+                        integer -> integer + "hello"
+                ));
     }
 
 }

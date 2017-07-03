@@ -15,7 +15,15 @@ public interface PerformanceFixed {
     public Stream<Artist> getMusicians();
 
     public default Stream<Artist> getAllMusicians() {
-        return Exercises.replaceThisWithSolution();
+        return getMusicians().flatMap(
+                artist -> {
+                    if (artist.getMembers().count() > 0) {
+                        return artist.getMembers();
+                    } else {
+                        return Stream.of(artist);
+                    }
+                }
+        );
     }
 
 }
