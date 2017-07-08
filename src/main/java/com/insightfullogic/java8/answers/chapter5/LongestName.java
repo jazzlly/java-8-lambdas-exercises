@@ -7,10 +7,12 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import static java.util.Comparator.comparing;
+import static java.util.Comparator.comparingInt;
 
 public class LongestName {
 
-    private static Comparator<Artist> byNameLength = comparing(artist -> artist.getName().length());
+    // private static Comparator<Artist> byNameLength = comparing(artist -> artist.getName().length());
+    private static Comparator<Artist> byNameLength = comparingInt(artist -> artist.getName().length());
 
     public static Artist byReduce(List<Artist> artists) {
         return artists.stream()

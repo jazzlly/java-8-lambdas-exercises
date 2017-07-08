@@ -39,10 +39,9 @@ public class Question1 {
     }
 
     public static String getLowcaseMaxString(List<String> strings) {
-        String tmp = "";
-        strings.stream().filter(s -> {
-
-        })
+        // String tmp = "";
+        // strings.stream().filter(s -> { })
+        return null;
     }
 
     public static void main(String[] args) {

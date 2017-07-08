@@ -12,7 +12,13 @@ import static java.util.stream.Collectors.groupingBy;
 public class WordCount {
 
     public static Map<String, Long> countWords(Stream<String> names) {
-        return Exercises.replaceThisWithSolution();
+        return names.collect(groupingBy(s -> s, counting()));
+        //return Exercises.replaceThisWithSolution();
     }
 
+    public static void main(String[] args) {
+        Map<String, Long> map = WordCount.countWords(
+                Stream.of("ray", "jiang", "ray", "tom", "ray", "jiang"));
+        System.out.println(map.toString());
+    }
 }
