@@ -27,8 +27,10 @@ public class GroupingBy<T, K> implements Collector<T, Map<K, List<T>>, Map<K, Li
     public BiConsumer<Map<K, List<T>>, T> accumulator() {
         return (kListMap, t) -> {
             K k = classifier.apply(t);
-            List<T> list = kListMap.get(k);
-            if (list != null &&)
+            List<T> aList = kListMap.computeIfAbsent(k, k1 -> new ArrayList<T>());
+            if (!aList.contains(t)) {
+                aList.add(t);
+            }
         };
         // return Exercises.replaceThisWithSolution();
     }
