@@ -36,6 +36,7 @@ public Supplier<StringCombiner> supplier() {
     public BiConsumer<StringCombiner, String> accumulator() {
         return StringCombiner::add;
     }
+
     // END accumulator
 
     @Override
