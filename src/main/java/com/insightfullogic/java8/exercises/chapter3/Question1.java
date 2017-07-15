@@ -38,12 +38,11 @@ public class Question1 {
         return str.chars().filter(value -> Character.isLowerCase(value)).count();
     }
 
-//    public static String getLowcaseMaxString(List<String> strings) {
-//        String tmp = "";
-//        strings.stream().filter(s -> {
-//
-//        })
-//    }
+    public static String getLowcaseMaxString(List<String> strings) {
+        // String tmp = "";
+        // strings.stream().filter(s -> { })
+        return null;
+    }
 
     public static void main(String[] args) {
         System.out.println(addUp(Stream.of(1,2,3)));

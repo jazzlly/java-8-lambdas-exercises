@@ -3,6 +3,8 @@ package com.insightfullogic.java8.examples.chapter5;
 import com.insightfullogic.java8.examples.chapter1.Artist;
 
 import java.util.List;
+import java.util.StringJoiner;
+import java.util.function.BiFunction;
 import java.util.stream.Collectors;
 
 public class StringExamples {
@@ -56,12 +58,12 @@ StringBuilder reduced =
     artists.stream()
            .map(Artist::getName)
            .reduce(new StringBuilder(), (builder, name) -> {
-                   if (builder.length() > 0)
-                       builder.append(", ");
+               if (builder.length() > 0)
+                   builder.append(", ");
 
-                   builder.append(name);
-                   return builder;
-               }, (left, right) -> left.append(right));
+               builder.append(name);
+               return builder;
+           }, (left, right) -> left.append(right));
 
 reduced.insert(0, "[");
 reduced.append("]");
@@ -97,6 +99,19 @@ String result =
         return result;
     }
 
+    public static String formatArtistsRefactor6(List<Artist> artists) {
+        String result =
+                artists.stream()
+                        .map(Artist::getName)
+                        .reduce(new StringJoiner(", ", "[", "]"),
+                                StringJoiner::add,
+                                StringJoiner::merge)
+                        .toString();
+        // END refactor_4
+        return result;
+    }
+
+
     public static String formatArtistsRefactor5(List<Artist> artists) {
         // BEGIN refactor_5
 String result =
@@ -125,5 +140,19 @@ String result =
     ,
     StringCombiner::merge)
             .toString()*/
+
+    public static void main(String[] args) {
+        BiFunction<Integer, Long, String> bf = (integer, aLong) -> "" + integer + ":" + aLong;
+
+        BiFunction<StringCombiner, String, StringCombiner>
+                sbf = (stringCombiner, s) -> {
+            stringCombiner.add(s);
+            return stringCombiner;
+        };
+
+        System.out.println(bf.apply(10, 1l));
+        System.out.println(sbf.apply(new StringCombiner(",", "[", "]"), "test").toString());
+    }
+
 
 }
