@@ -73,17 +73,17 @@ private boolean isPrime(int number) {
     public static class ParallelFunctionalPrimeCounter implements PrimeCounter {
         @Override
         // BEGIN parallel_functional
-public long countPrimes(int upTo) {
-    return IntStream.range(1, upTo)
+        public long countPrimes(int upTo) {
+            return IntStream.range(1, upTo)
                     .parallel()
                     .filter(this::isPrime)
                     .count();
-}
+        }
 
-private boolean isPrime(int number) {
-    return IntStream.range(2, number)
-            .allMatch(x -> (number % x) != 0);
-}
+        private boolean isPrime(int number) {
+            return IntStream.range(2, number)
+                    .allMatch(x -> (number % x) != 0);
+        }
         // END parallel_functional
     }
 
